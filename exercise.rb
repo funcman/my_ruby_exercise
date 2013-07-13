@@ -74,10 +74,21 @@ TEXT
 puts "========================================================================"
 
 puts "What's your name?"
-name = gets.chomp()         # chomp()可以去除\n符
+name = STDIN.gets.chomp()         # chomp()可以去除\n符
 print "Hi, #{name}. "
 puts "And how old are you?"
-age = gets.chomp()
+age = STDIN.gets.chomp()
 print "OK, I guess you was born in %d.\n" % (Integer(Time.new.strftime("%Y")) - Integer(age))
+
+puts "========================================================================"
+
+if ARGV.size >= 2
+    first, second = ARGV
+    puts "%s %s" % [ARGV[0], first]
+    puts "%s %s" % [ARGV[1], second]
+    puts $0
+else
+    puts "Arguments don't exist or not enough argument."
+end
 
 puts "= END =================================================================="
