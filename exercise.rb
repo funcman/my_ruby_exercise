@@ -71,4 +71,13 @@ Ruby转义字符：
 实际上在这里不需要转义字符就可以任意输出引号"和'。
 TEXT
 
+puts "========================================================================"
+
+puts "What's your name?"
+name = gets.chomp()         # chomp()可以去除\n符
+print "Hi, #{name}. "
+puts "And how old are you?"
+age = gets.chomp()
+print "OK, I guess you was born in %d.\n" % (Integer(Time.new.strftime("%Y")) - Integer(age))
+
 puts "= END =================================================================="
