@@ -78,7 +78,11 @@ name = STDIN.gets.chomp()         # chomp()可以去除\n符
 print "Hi, #{name}. "
 puts "And how old are you?"
 age = STDIN.gets.chomp()
-print "OK, I guess you was born in %d.\n" % (Integer(Time.new.strftime("%Y")) - Integer(age))
+begin
+    print "OK, I guess you was born in %d.\n" % (Integer(Time.new.strftime("%Y")) - Integer(age))
+rescue
+    print "OK...OK... I no longer asked your age.\n"
+end
 
 puts "========================================================================"
 
@@ -91,4 +95,21 @@ else
     puts "Arguments don't exist or not enough argument."
 end
 
+puts "========================================================================"
+
+puts "Open a file, input the filename please:"
+print "> "
+filename = STDIN.gets.chomp()
+if filename.strip.size > 0
+    begin
+        File.open(filename) do |file|
+            puts "Here is your file: #{filename}"
+            puts file.read()
+        end
+    rescue
+        puts "Can't open the file. Perhaps the file does not exist."
+    end
+else
+    puts "Nothing is opened."
+end
 puts "= END =================================================================="
